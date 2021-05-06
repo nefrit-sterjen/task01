@@ -7,7 +7,7 @@ async function run(inputFile, outputFile) {
 
     await pipeline(
         fs.createReadStream(path.join(inputFile)),
-        fs.createWriteStream(path.join(outputFile)),
+        fs.createWriteStream(path.join(outputFile), {flags: 'as+'}),
         err => {
             if (err) {
                 console.log(err.message)
