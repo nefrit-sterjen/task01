@@ -29,12 +29,10 @@ import fs from 'fs';
 	расширением файла. Вывести пользователю пример файла text.txt or my_dir/text.txt
 	-5 - Неверное значение -o, делается аналогично пункту выше*/
 
-function getThreats(argv) {
+function getCommands(argv) {
     argv = argv.slice(2);
 
-    if (argvCheckout(argv)) {
-
-    }
+    return argvCheckout(argv)
 }
 
 //Функция, проверяющая корректность введенных данных из командной строки
@@ -62,6 +60,8 @@ function argvCheckout(argv) {
 
         let output = parsedArgv.o !== undefined ? parsedArgv.o : parsedArgv.output;
         checkoutOutput(output);
+
+        return {shift: shift, action: action, input: input, output: output}
 
 
     } else {
@@ -103,11 +103,11 @@ function checkoutInput(input) {
 
 //функция, проверяющая существование output
 
-function checkoutOutput(output){
-    if(output === true){
+function checkoutOutput(output) {
+    if (output === true) {
         console.log('Error! Output file path is empty! You need to enter output path and repeat!');
         process.exit(5);
     }
 }
 
-getThreats(process.argv);
+console.log(getCommands(process.argv));
