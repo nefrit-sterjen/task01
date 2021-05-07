@@ -1,4 +1,5 @@
-import parseArgv from 'minimist'
+import parseArgv from 'minimist';
+import fs from 'fs';
 
 /*!!!ВАЖНОЕ!!!! - парсинг argv выполнен с помощью стороннего фреймворка minimist
 	ССЫЛКА НА ДОКУМЕНТАЦИЮ - https://www.npmjs.com/package/minimist
@@ -51,9 +52,19 @@ function argvCheckout(argv) {
         checkoutShift(shift);
 
 
+        //Проверка необязательных комманд
 
-    }
-    else {
+        // Проверка существования input
+        let input = parsedArgv.i !== undefined ? parsedArgv.i : parsedArgv.input;
+        checkoutInput(input);
+
+        //Проверка существования output
+
+        let output = parsedArgv.o !== undefined ? parsedArgv.o : parsedArgv.output;
+        checkoutOutput(output);
+
+
+    } else {
         console.log("Error! You didn't write down the mandatory commands. -a(--action) and " +
             "-(--shift) are mandatory commands. You will need to repeat " +
             "it without mistakes. For example: node index.js -a encode -s 2");
@@ -62,18 +73,40 @@ function argvCheckout(argv) {
 }
 
 //функция, проверяющая корректность action
-function checkoutAction(action){
-    if(action !== 'encode' && action !== 'decode'){
+function checkoutAction(action) {
+    if (action !== 'encode' && action !== 'decode') {
         console.log("It's incorrect value -action(-a). It'll be encode or decode");
         process.exit(2);
     }
 }
 
 //функция, проверяющая корректность shift
-function checkoutShift(shift){
-    if(!Number.isInteger(shift)){
+function checkoutShift(shift) {
+    if (!Number.isInteger(shift)) {
         console.log("It's incorrect value -shift(-s). It'll be integer number");
         process.exit(3);
+    }
+}
+
+//функция, проверяющая существование файла input
+
+function checkoutInput(input) {
+    if (input !== undefined || input === true) {
+        fs.stat(input, err => {
+            if (err) {
+                console.log("File with this path isn't exist! You need to check your input path!");
+                process.exit(4);
+            }
+        })
+    }
+}
+
+//функция, проверяющая существование output
+
+function checkoutOutput(output){
+    if(output === true){
+        console.log('Error! Output file path is empty! You need to enter output path and repeat!');
+        process.exit(5);
     }
 }
 
