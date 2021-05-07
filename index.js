@@ -1,8 +1,7 @@
 import {run} from "./fileController.js";
-import fs from 'fs';
-import path from 'path';
+import {getThreads} from "./threads.js";
+import {getCommands} from "./argvController.js";
 
-const readStream = fs.createReadStream(process.argv[2])
-const writeStream = fs.createReadStream(process.argv[2])
+const commands = getThreads(getCommands(process.argv))
 
-run(process.argv[2], process.argv[3]);
+run(commands.readable, commands.writable);

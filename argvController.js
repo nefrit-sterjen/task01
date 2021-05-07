@@ -110,4 +110,4 @@ function checkoutOutput(output) {
     }
 }
 
-console.log(getCommands(process.argv));
+export {getCommands}
