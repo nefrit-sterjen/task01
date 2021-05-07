@@ -2,12 +2,12 @@ import fs from 'fs';
 import path from 'path';
 import {pipeline} from 'stream';
 
-async function run(inputFile, outputFile) {
+async function run(inputStream, outputStream) {
     console.log('Start!');
 
     await pipeline(
-        fs.createReadStream(path.join(inputFile)),
-        fs.createWriteStream(path.join(outputFile), {flags: 'as+'}),
+        inputStream,
+        outputStream,
         err => {
             if (err) {
                 console.log(err.message)
@@ -18,6 +18,8 @@ async function run(inputFile, outputFile) {
         }
     );
 }
+
+//Duplex transform чекать в документации для потока шифрования
 
 export {run};
 

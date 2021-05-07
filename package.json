@@ -8,6 +8,9 @@
   },
   "type": "module",
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "nefrit-sterjen",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.5"
+  }
 }
