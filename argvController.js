@@ -65,7 +65,7 @@ function argvCheckout(argv) {
 
 
     } else {
-        console.log("Error! You didn't write down the mandatory commands. -a(--action) and " +
+        process.stderr.write("Error! You didn't write down the mandatory commands. -a(--action) and " +
             "-(--shift) are mandatory commands. You will need to repeat " +
             "it without mistakes. For example: node index.js -a encode -s 2");
         process.exit(1);
@@ -75,7 +75,7 @@ function argvCheckout(argv) {
 //функция, проверяющая корректность action
 function checkoutAction(action) {
     if (action !== 'encode' && action !== 'decode') {
-        console.log("It's incorrect value -action(-a). It'll be encode or decode");
+        process.stderr.write("It's incorrect value -action(-a). It'll be encode or decode");
         process.exit(2);
     }
 }
@@ -83,7 +83,7 @@ function checkoutAction(action) {
 //функция, проверяющая корректность shift
 function checkoutShift(shift) {
     if (!Number.isInteger(shift)) {
-        console.log("It's incorrect value -shift(-s). It'll be integer number");
+        process.stderr.write("It's incorrect value -shift(-s). It'll be integer number");
         process.exit(3);
     }
 }
@@ -94,7 +94,7 @@ function checkoutInput(input) {
     if (input !== undefined || input === true) {
         fs.stat(input, err => {
             if (err) {
-                console.log("File with this path isn't exist! You need to check your input path!");
+                process.stderr.write("File with this path isn't exist! You need to check your input path!");
                 process.exit(4);
             }
         })
@@ -105,7 +105,7 @@ function checkoutInput(input) {
 
 function checkoutOutput(output) {
     if (output === true) {
-        console.log('Error! Output file path is empty! You need to enter output path and repeat!');
+        process.stderr.write('Error! Output file path is empty! You need to enter output path and repeat!');
         process.exit(5);
     }
 }
