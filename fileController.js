@@ -1,12 +1,11 @@
-import fs from 'fs';
-import path from 'path';
 import {pipeline} from 'stream';
 
-async function run(inputStream, outputStream) {
+async function run(inputStream, transformStream, outputStream) {
     console.log('Start!');
 
     await pipeline(
         inputStream,
+        transformStream,
         outputStream,
         err => {
             if (err) {

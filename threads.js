@@ -1,9 +1,12 @@
 import fs from 'fs';
+import {CesarCipher} from "./cesarCipher.js";
 
 function getThreads(commands) {
     const readable = commands.input !== undefined ?
         fs.createReadStream(commands.input)
         : process.stdin;
+
+    const transform = new CesarCipher(null,commands.shift, commands.action);
 
     const writable = commands.output !== undefined ?
         fs.createWriteStream(commands.output, {
@@ -11,7 +14,7 @@ function getThreads(commands) {
         })
         : process.stdout;
 
-    return {writable: writable, readable: readable}
+    return {writable: writable, transform: transform, readable: readable}
 
 }
 

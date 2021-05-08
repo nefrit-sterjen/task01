@@ -4,4 +4,4 @@ import {getCommands} from "./argvController.js";
 
 const commands = getThreads(getCommands(process.argv))
 
-run(commands.readable, commands.writable);
+run(commands.readable, commands.transform, commands.writable);
