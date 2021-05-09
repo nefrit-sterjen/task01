@@ -16,13 +16,19 @@ You need to run the root index file.js with parameters.
 This parameter is required to specify the operating mode
 
 
--s (--shift) _2_
+To indicate a shift with a negative number, you need to enter (Please note that this command must be written **_without spaces_**):
 
-This parameter is required to specify the shift.
+**CORRECT OPTIONS:**
 
-To specify a shift with a negative number, enter:
+--shift=_- 2_
 
---shift = _-2_
+-s=_- 2_
+
+**WRONG OPTIONS:**
+
+~~-s = _-2_~~
+
+~~--shift = _-2_~~
 
 _!!!WITHOUT THESE PARAMETERS, THE PROGRAM WILL NOT WORK_
 
@@ -49,6 +55,8 @@ node index.js --action encode --shift 3
 
 node index.js -a encode -s 3 -i some.txt -o out.txt
 
+node index.js --output out.txt -a encode -s=-3 -i some.txt 
+
 
 **РУССКАЯ ВЕРСИЯ**
 
@@ -72,9 +80,20 @@ node index.js -a encode -s 3 -i some.txt -o out.txt
 
 Параметр необходим для указания сдвига.
 
-Чтобы указать сдвиг с отрицательным числом нужно ввести:
+Чтобы указать сдвиг с отрицательным числом нужно ввести(Обращайте внимание на то что данная команда должна быть написана **_без пробелов_**):
+
+**ПРАВИЛЬНЫЕ ВАРИАНТЫ:**
 
 --shift=_-2_
+
+-s=_-2_
+
+**НЕПРАВИЛЬНЫЕ ВАРИАНТЫ:**
+
+~~-s = _-2_~~ 
+
+~~--shift = _-2_~~
+
 
 _!!!БЕЗ ЭТИХ ПАРАМЕТРОВ ПРОГРАММА НЕ БУДЕТ РАБОТАТЬ_
 
@@ -100,6 +119,8 @@ node index.js -a encode -s 3
 
 node index.js --action encode --shift 3
 
-node index.js -a encode -s 3 -i some.txt -o out.txt  
+node index.js -a encode -s 3 -i some.txt -o out.txt 
+
+node index.js --output out.txt -a encode -s=-3 -i some.txt   
 
 
