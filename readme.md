@@ -9,22 +9,25 @@ You need to run the root index file.js with parameters.
 
 ----------------------------------------------
 
-** Required parameters:**
+**Required parameters:**
+
 -a (--action) encode/decode
 
 This parameter is required to specify the operating mode
 
-----------------------------------------------
 
 -s (--shift) _2_
 
 This parameter is required to specify the shift.
 
+To specify a shift with a negative number, enter:
+
+--shift = _-2_
+
 _!!!WITHOUT THESE PARAMETERS, THE PROGRAM WILL NOT WORK_
 
-----------------------------------------------
 
-** Optional parameters:**
+**Optional parameters:**
 
 -i (--input) _your_path.txt_
 
@@ -59,15 +62,19 @@ node index.js -a encode -s 3 -i some.txt -o out.txt
 ----------------------------------------------
 
 **Обязательные параметры:**
+
  -a (--action) encode/decode
 
 Параметр необходим для указания режима работы
 
-----------------------------------------------
 
 -s (--shift) _2_
 
 Параметр необходим для указания сдвига.
+
+Чтобы указать сдвиг с отрицательным числом нужно ввести:
+
+--shift=_-2_
 
 _!!!БЕЗ ЭТИХ ПАРАМЕТРОВ ПРОГРАММА НЕ БУДЕТ РАБОТАТЬ_
 
